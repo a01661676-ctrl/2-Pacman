@@ -8,32 +8,33 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(10, 0)],  # Cambiado de 5 a 10
+    [vector(-180, -160), vector(0, 10)],  # Cambiado de 5 a 10
+    [vector(100, 160), vector(0, -10)],   # Cambiado de 5 a 10
+    [vector(100, -160), vector(-10, 0)],  # Cambiado de 5 a 10
 ]
 
+# Nuevo diseño del tablero
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
-    0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
@@ -106,7 +107,7 @@ def move():
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
 
-    # Movimiento inteligente de fantasmas
+    # Movimiento inteligente de fantasmas (más rápido)
     for ghost in ghosts:
         point, course = ghost
         
@@ -134,7 +135,7 @@ def move():
 
     update()
 
-    ontimer(move, 100)
+    ontimer(move, 50)  # Cambiado de 100 a 50 para mayor velocidad general
 
 def move_towards_pacman(ghost):
     "Mueve el fantasma directamente hacia Pacman."
@@ -147,10 +148,10 @@ def move_towards_pacman(ghost):
     # Elegir la dirección principal (horizontal o vertical) con mayor diferencia
     if abs(dx) > abs(dy):
         # Movimiento horizontal
-        new_course = vector(5 if dx > 0 else -5, 0)
+        new_course = vector(10 if dx > 0 else -10, 0)  # Cambiado de 5 a 10
     else:
         # Movimiento vertical
-        new_course = vector(0, 5 if dy > 0 else -5)
+        new_course = vector(0, 10 if dy > 0 else -10)  # Cambiado de 5 a 10
     
     # Verificar si la nueva dirección es válida
     if valid(point + new_course):
@@ -158,9 +159,9 @@ def move_towards_pacman(ghost):
     else:
         # Si no es válida, intentar la otra dirección
         if abs(dx) > abs(dy):
-            alternative = vector(0, 5 if dy > 0 else -5)
+            alternative = vector(0, 10 if dy > 0 else -10)  # Cambiado de 5 a 10
         else:
-            alternative = vector(5 if dx > 0 else -5, 0)
+            alternative = vector(10 if dx > 0 else -10, 0)  # Cambiado de 5 a 10
         
         if valid(point + alternative):
             ghost[1] = alternative
@@ -170,7 +171,7 @@ def move_to_intercept(ghost):
     point, course = ghost
     
     # Predecir posición futura de Pacman
-    predicted_pos = pacman + aim * 3
+    predicted_pos = pacman + aim * 2  # Reducido de 3 a 2 para predicción más agresiva
     
     # Calcular dirección hacia la posición predicha
     dx = predicted_pos.x - point.x
@@ -178,9 +179,9 @@ def move_to_intercept(ghost):
     
     # Elegir dirección
     if abs(dx) > abs(dy):
-        new_course = vector(5 if dx > 0 else -5, 0)
+        new_course = vector(10 if dx > 0 else -10, 0)  # Cambiado de 5 a 10
     else:
-        new_course = vector(0, 5 if dy > 0 else -5)
+        new_course = vector(0, 10 if dy > 0 else -10)  # Cambiado de 5 a 10
     
     if valid(point + new_course):
         ghost[1] = new_course
@@ -192,10 +193,10 @@ def move_random_smart(ghost):
     "Movimiento aleatorio pero evitando callejones sin salida."
     point, course = ghost
     
-    # Lista de direcciones posibles
+    # Lista de direcciones posibles (velocidad aumentada)
     options = [
-        vector(5, 0), vector(-5, 0),
-        vector(0, 5), vector(0, -5)
+        vector(10, 0), vector(-10, 0),  # Cambiado de 5 a 10
+        vector(0, 10), vector(0, -10)   # Cambiado de 5 a 10
     ]
     
     # Filtrar direcciones válidas
@@ -231,9 +232,9 @@ def move_strategic(ghost):
     dy = closest_point.y - point.y
     
     if abs(dx) > abs(dy):
-        new_course = vector(5 if dx > 0 else -5, 0)
+        new_course = vector(10 if dx > 0 else -10, 0)  # Cambiado de 5 a 10
     else:
-        new_course = vector(0, 5 if dy > 0 else -5)
+        new_course = vector(0, 10 if dy > 0 else -10)  # Cambiado de 5 a 10
     
     if valid(point + new_course):
         ghost[1] = new_course
